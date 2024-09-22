@@ -38,9 +38,9 @@ pip install -r requirements.txt
 ```bash
 python my_model.py --input <input_data> --model <model_path>
 ```
-## Dataset
+## Dataset and Model weight
 
-The training dataset used for developing CCLMoff and model parameters can be accessed via Figshare. This dataset is essential for training and testing the model on various sgRNA and target site pairs.
+The training dataset used for developing CCLMoff and model weights can be accessed via Figshare. This dataset is essential for training and testing the model on various sgRNA and target site pairs.
 
 - [Training Dataset on Figshare](https://doi.org/10.6084/m9.figshare.27080566.v1)
 
