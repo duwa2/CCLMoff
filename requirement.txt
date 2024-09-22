@@ -1,0 +1,12 @@
+torch==2.0.1        # Specify the version of PyTorch you're using
+torchvision==0.15.2 # Optional: for image-related tasks
+torchaudio==2.0.1   # Optional: for audio-related tasks
+
+numpy==1.23.5       # For numerical computations
+scipy==1.9.3        # Scientific computing library
+pandas==1.5.2       # For handling data
+matplotlib==3.6.2   # For plotting/visualization
+seaborn==0.12.1     # For statistical data visualization (optional)
+tqdm==4.64.1        # For progress bars
+
+scikit-learn==1.1.3 # For machine learning utilities
