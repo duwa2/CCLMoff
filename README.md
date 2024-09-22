@@ -29,11 +29,20 @@ cd CCLMoff
 
 # Install the required dependencies
 pip install -r requirements.txt
+```
 
 ### Running the Model
 
-	1.	Prepare your input data: Ensure you have your sgRNA and target site sequences formatted correctly.
-	2.	Run the model using the my_model.py script:
+1.	Prepare your input data: Ensure you have your sgRNA and target site sequences formatted correctly.
+2.	Run the model using the my_model.py script:
+```bash
+python my_model.py --input <input_data>
+```
+## Dataset
+
+The training dataset used for developing CCLMoff and model parameters can be accessed via Figshare. This dataset is essential for training and testing the model on various sgRNA and target site pairs.
+
+- [Training Dataset on Figshare](https://doi.org/10.6084/m9.figshare.27080566.v1)
 
 
 ## License
