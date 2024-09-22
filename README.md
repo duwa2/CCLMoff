@@ -36,7 +36,7 @@ pip install -r requirements.txt
 1.	Prepare your input data: Ensure you have your sgRNA and target site sequences formatted correctly.
 2.	Run the model using the my_model.py script:
 ```bash
-python my_model.py --input <input_data>
+python my_model.py --input <input_data> --model <model_path>
 ```
 ## Dataset
 
