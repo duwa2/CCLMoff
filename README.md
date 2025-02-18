@@ -1,7 +1,3 @@
-Here’s the updated GitHub tutorial with the new information incorporated. The additions are seamlessly integrated to maintain clarity and flow while ensuring all key features and functionalities are highlighted:
-
----
-
 # CCLMoff: CRISPR/Cas Language Model for Off-Target Prediction
 
 Genome editing with the CRISPR/Cas9 system has revolutionized life and medical sciences, particularly in treating monogenic human genetic diseases, by offering long-term therapeutic effects from a single intervention. However, CRISPR/Cas9 can tolerate mismatches and DNA/RNA bulges at target sites, leading to unintended off-target effects that pose challenges for gene-editing therapy development.
