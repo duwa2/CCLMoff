@@ -1,5 +1,7 @@
 # CCLMoff: CRISPR/Cas Language Model for Off-Target Prediction
 
+![Workflow](workflow.jpg)
+
 Genome editing with the CRISPR/Cas9 system has revolutionized life and medical sciences, particularly in treating monogenic human genetic diseases, by offering long-term therapeutic effects from a single intervention. However, CRISPR/Cas9 can tolerate mismatches and DNA/RNA bulges at target sites, leading to unintended off-target effects that pose challenges for gene-editing therapy development.
 
 To address these limitations, we introduce **CRISPR/Cas Language Model for Off-Target Prediction (CCLMoff)**, a deep learning framework that incorporates a pretrained language model from RNAcentral for off-target site prediction. CCLMoff leverages the RNA language model to extract mutual sequence information between sgRNA and target sites and is trained on an extensive dataset. This approach enables CCLMoff to achieve superior performance compared to existing models, accurately identifying off-target sites and demonstrating robust generalization across diverse Next-Generation Sequencing (NGS)-based detection datasets. Additionally, CCLMoff's interpretability highlights the significance of the seed region in off-target prediction, underscoring its advanced analytical capabilities.
