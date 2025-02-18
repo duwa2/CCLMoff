@@ -26,8 +26,36 @@ The development of CCLMoff paves the way for a comprehensive, end-to-end in sili
 Follow the steps below to use the CCLMoff model in your research or project.
 
 ### Prerequisites
-- Python >= 3.7
-- Required Python packages (listed in `requirements.txt`)
+1. **Python >= 3.7**
+2. **Required Python Packages**: Install the packages listed in `requirements.txt`.
+3. **Cas-OFFinder**: Cas-OFFinder is required for the preprocessing step to generate sgRNA-target site mismatch pairs. Follow the steps below to install it:
+
+   #### Installing Cas-OFFinder
+   - **Step 1**: Clone the Cas-OFFinder repository:
+     ```bash
+     git clone https://github.com/snugel/cas-offinder.git
+     ```
+   - **Step 2**: Navigate to the Cas-OFFinder directory:
+     ```bash
+     cd cas-offinder
+     ```
+   - **Step 3**: Compile the program:
+     ```bash
+     make
+     ```
+   - **Step 4**: Add Cas-OFFinder to your system's PATH:
+     ```bash
+     export PATH=$PATH:$(pwd)
+     ```
+     (Add this line to your `.bashrc` or `.zshrc` file to make it permanent.)
+
+   - **Step 5**: Verify the installation:
+     ```bash
+     cas-offinder --help
+     ```
+     If the installation is successful, you should see the help menu for Cas-OFFinder.
+
+---
 
 ### Installation
 
@@ -50,20 +78,31 @@ Follow the steps below to use the CCLMoff model in your research or project.
 
 ## Usage
 
-### 1. **Evaluating sgRNA-Target Site Pairs**
-CCLMoff is designed to evaluate whether a given sgRNA and target site pair constitutes a potential off-target site. For researchers who only have sgRNAs and wish to predict off-target effects, we provide a preprocessing script (`preprocess.py`) that integrates Cas-OFFinder to generate all possible sgRNA-target site mismatch pairs. These pairs can then be evaluated using CCLMoff.
+### 1. **Preprocessing with Cas-OFFinder**
+For researchers who only have sgRNAs and wish to predict off-target effects, we provide a preprocessing script (`preprocess.py`) that integrates **Cas-OFFinder** to generate all possible sgRNA-target site mismatch pairs. These pairs can then be evaluated using CCLMoff.
 
 To preprocess your data:
 ```bash
-python preprocess.py --sgRNA <sgRNA_sequence> --output <output_file>
+python preprocess.py --sgRNA <sgRNA_sequence> --output <output_file> [--mismatch <mismatch_limit>] [--genome <genome_index>]
 ```
+
+- Replace `<sgRNA_sequence>` with your sgRNA sequence (e.g., `"GAGTCCGAGCAGAAGAAGAANGG"`).
+- Replace `<output_file>` with the desired path to save the output file (e.g., `"output.txt"`).
+- Optionally, specify the maximum number of mismatches (`--mismatch`, default: 3) and the genome index (`--genome`, default: `"hg19"`).
+
+Example:
+```bash
+python preprocess.py --sgRNA GAGTCCGAGCAGAAGAAGAANGG --output output.txt --mismatch 3 --genome hg19
+```
+
+The script will generate a file (`output.txt`) containing all possible sgRNA-target site mismatch pairs.
 
 ### 2. **Running the Pre-trained Model**
 We have included a pre-trained CCLMoff model in the repository for ready-to-use predictions. To run the model on your data:
 ```bash
 python my_model.py --input <input_data> --model <model_path>
 ```
-- Replace `<input_data>` with the path to your input file.
+- Replace `<input_data>` with the path to your input file (e.g., `output.txt` from the preprocessing step).
 - Replace `<model_path>` with the path to the pre-trained model weights.
 
 ### 3. **Custom Training**
@@ -89,7 +128,7 @@ The training dataset and pre-trained model weights used for developing CCLMoff a
 
 ## Documentation and Tutorials
 
-We have significantly expanded the repository documentation to provide clear and detailed guidance on using CCLMoff. For step-by-step tutorials, examples, and troubleshooting, please refer to the [documentation]([link_to_docs](https://doi.org/10.6084/m9.figshare.27080566.v1)).
+We have significantly expanded the repository documentation to provide clear and detailed guidance on using CCLMoff. For step-by-step tutorials, examples, and troubleshooting, please refer to the [documentation](link_to_docs).
 
 ---
 
@@ -108,13 +147,3 @@ For questions, feedback, or support, please open an issue in the repository or c
 
 ---
 
-## Contributing
-
-We welcome contributions to improve CCLMoff! If you'd like to contribute, please follow these steps:
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Submit a pull request with a detailed description of your changes.
-
----
-
-This updated version incorporates all the new information while maintaining a clear and professional structure. Let me know if you need further refinements!
