@@ -126,12 +126,6 @@ The training dataset and pre-trained model weights used for developing CCLMoff a
 
 ---
 
-## Documentation and Tutorials
-
-We have significantly expanded the repository documentation to provide clear and detailed guidance on using CCLMoff. For step-by-step tutorials, examples, and troubleshooting, please refer to the [documentation](link_to_docs).
-
----
-
 ## License
 
 This project is licensed under the MIT License. For more details, see the [LICENSE.md](LICENSE.md) file.
