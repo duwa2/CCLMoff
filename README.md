@@ -11,6 +11,56 @@ The development of CCLMoff paves the way for a comprehensive, end-to-end in sili
 ---
 
 ## Key Features
+
+## 🧪 Benchmarking with Scripts
+
+To facilitate reproducible benchmarking, we provide two easy-to-use scripts for inference and evaluation on standardized datasets.
+
+### 🔹 `run_inference.sh`
+
+This script runs the pretrained `CCLMoff_V1` model on the default test dataset and outputs predictions.
+
+**Usage:**
+
+```bash
+bash scripts/run_inference.sh
+```
+
+This will generate a prediction file (e.g., `outputs/test.json` or `outputs/test.tsv`) based on your setup. Make sure your environment is activated and the model checkpoint exists under `checkpoints/`.
+
+---
+
+### 🔹 `evaluate.py`
+
+This script calculates standard classification metrics such as AUC, accuracy, F1-score, precision, and recall from model predictions.
+
+**Usage:**
+
+```bash
+python evaluate.py \
+    --input_file data/test.tsv \
+    --output_file outputs/eval_results.txt \
+    --threshold 0.5
+```
+
+Your input `.tsv` file should contain two columns:  
+- `label`: ground truth (0 or 1)  
+- `pred`: model prediction score (between 0 and 1)
+
+**Example TSV format:**
+
+```
+sgRNA_seq    off_seq    read    pred    label
+...          ...        ...     0.823   1
+...          ...        ...     0.163   0
+```
+
+---
+
+### 📘 Tutorial and Documentation
+
+Please refer to the [GitHub repository](https://github.com/duwa2/CCLMoff) for further details and usage instructions.
+
 - **Pretrained Language Model**: Utilizes RNAcentral's pretrained language model for enhanced mutual sequence information extraction.
 - **High Accuracy**: Superior performance in off-target site identification compared to existing models.
 - **Generalization**: Robust results across diverse NGS-based detection datasets.
