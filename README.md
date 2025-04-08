@@ -11,56 +11,6 @@ The development of CCLMoff paves the way for a comprehensive, end-to-end in sili
 ---
 
 ## Key Features
-
-## 🧪 Benchmarking with Scripts
-
-To facilitate reproducible benchmarking, we provide two easy-to-use scripts for inference and evaluation on standardized datasets.
-
-### 🔹 `run_inference.sh`
-
-This script runs the pretrained `CCLMoff_V1` model on the default test dataset and outputs predictions.
-
-**Usage:**
-
-```bash
-bash scripts/run_inference.sh
-```
-
-This will generate a prediction file (e.g., `outputs/test.json` or `outputs/test.tsv`) based on your setup. Make sure your environment is activated and the model checkpoint exists under `checkpoints/`.
-
----
-
-### 🔹 `evaluate.py`
-
-This script calculates standard classification metrics such as AUC, accuracy, F1-score, precision, and recall from model predictions.
-
-**Usage:**
-
-```bash
-python evaluate.py \
-    --input_file data/test.tsv \
-    --output_file outputs/eval_results.txt \
-    --threshold 0.5
-```
-
-Your input `.tsv` file should contain two columns:  
-- `label`: ground truth (0 or 1)  
-- `pred`: model prediction score (between 0 and 1)
-
-**Example TSV format:**
-
-```
-sgRNA_seq    off_seq    read    pred    label
-...          ...        ...     0.823   1
-...          ...        ...     0.163   0
-```
-
----
-
-### 📘 Tutorial and Documentation
-
-Please refer to the [GitHub repository](https://github.com/duwa2/CCLMoff) for further details and usage instructions.
-
 - **Pretrained Language Model**: Utilizes RNAcentral's pretrained language model for enhanced mutual sequence information extraction.
 - **High Accuracy**: Superior performance in off-target site identification compared to existing models.
 - **Generalization**: Robust results across diverse NGS-based detection datasets.
@@ -173,16 +123,93 @@ python train.py --data <training_data> --output <output_model_path>
 
 The training dataset and pre-trained model weights used for developing CCLMoff are available on Figshare. These resources are essential for training, testing, and reproducing the results of the model.
 
-- **Training Dataset**: [Download on Figshare](https://doi.org/10.6084/m9.figshare.27080566.v1)
+- **Training Dataset**: [Download on Figshare](https://doi.org/10.6084/m9.figshare.27080566.v2)
 - **Pre-trained Model Weights**: Included in the repository under `models/`.
 
 ---
 
-## License
 
-This project is licensed under the MIT License. For more details, see the [LICENSE.md](LICENSE.md) file.
+## 🧪 Benchmarking with Scripts
+
+To facilitate reproducible benchmarking, we provide two easy-to-use scripts for inference and evaluation on standardized datasets.
+
+
+This script runs the pretrained `CCLMoff_V1` [Download](https://doi.org/10.6084/m9.figshare.27080566.v2) model on the default test dataset and outputs predictions.
+
+**Usage:**
+
+```bash
+bash scripts/run_inference.sh
+```
+
+This will generate a prediction file (e.g., `outputs/test.json` or `outputs/test.tsv`) based on your setup. Make sure your environment is activated and the model checkpoint exists under `checkpoints/`.
 
 ---
+
+
+This script calculates standard classification metrics such as AUC, accuracy, F1-score, precision, and recall from model predictions.
+
+**Usage:**
+
+```bash
+python evaluate.py \
+    --input_file data/test.tsv \
+    --output_file outputs/eval_results.txt \
+    --threshold 0.5
+```
+
+Your input `.tsv` file should contain two columns:  
+- `label`: ground truth (0 or 1)  
+- `pred`: model prediction score (between 0 and 1)
+
+**Example TSV format:**
+
+```
+sgRNA_seq    off_seq    read    pred    label
+...          ...        ...     0.823   1
+...          ...        ...     0.163   0
+```
+
+
+---
+
+## 🚀 Run CCLMoff via Docker
+
+You can quickly run the **CCLMoff** project using the pre-built Docker image:
+
+### 🐳 Pull the image from Docker Hub
+
+```bash
+docker pull weiandu/cclmoff:gpu
+```
+
+### ▶️ Run the container
+
+```bash
+docker run -it weiandu/cclmoff:gpu
+```
+
+If you want to mount your current project directory:
+
+```bash
+docker run -it -v $(pwd):/workspace weiandu/cclmoff:gpu
+```
+
+> Note: The default entrypoint runs `python main.py` inside the `/workspace` directory.
+
+### 📦 Build the image locally (optional)
+
+```bash
+git clone https://github.com/duwa2/CCLMoff.git
+cd CCLMoff
+docker build -t cclmoff:local .
+docker run -it cclmoff:local
+```
+
+
+
+---
+
 
 ## Contact
 
@@ -193,3 +220,7 @@ For questions, feedback, or support, please open an issue in the repository or c
 
 ---
 
+
+## License
+
+This project is licensed under the MIT License. For more details, see the [LICENSE.md](LICENSE.md) file.
